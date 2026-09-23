@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Document | Document Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <h1>S</h1>
+        </span>
+        <span class="brand-title">Doc Hub</span>
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <nav id="navLinks" class="nav-menu">
+        <a href="index.html" class="nav-link">Documents</a>
+        <a href="cv-ml.html" class="nav-link">CV & ML</a>
+        <a href="ssp.html" class="nav-link">SSP</a>
+        <a href="fsd.html" class="nav-link">FSD</a>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme"
+        title="Switch light/dark theme">
+        <span class="theme-icon-wrap" aria-hidden="true">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </span>
+        <span class="theme-toggle-text" id="themeLabel">Dark</span>
+      </button>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="upload-page-wrapper">
+      <a href="index.html" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Back to Documents</span>
+      </a>
+
+      <div class="upload-page-header">
+        <h1>Upload Document</h1>
+        <p>Add a new PDF file to your hub. Choose your section and drop your PDF below.</p>
+      </div>
+
+      <section class="upload-section" id="upload">
+        <div class="upload-card">
+          <form id="uploadForm" enctype="multipart/form-data">
+            <div class="form-grid">
+              <div class="field">
+                <label for="docName">Document Name (Optional)</label>
+                <input id="docName" name="name" type="text" placeholder="Auto-fills from file name if blank"
+                  autocomplete="off" />
+              </div>
+
+              <div class="field">
+                <label>Section</label>
+                <div class="section-toggle" role="radiogroup">
+                  <label class="toggle-option active">
+                    <input type="radio" name="category" value="cv-ml" checked />
+                    <span>CV & ML</span>
+                  </label>
+                  <label class="toggle-option">
+                    <input type="radio" name="category" value="ssp" />
+                    <span>SSP</span>
+                  </label>
+                  <label class="toggle-option">
+                    <input type="radio" name="category" value="fsd" />
+                    <span>FSD</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field full">
+                <label for="pdf">PDF file</label>
+                <label class="file-drop" id="fileDrop">
+                  <input id="pdf" name="pdf" type="file" accept="application/pdf,.pdf" required />
+                  <div class="upload-icon-circle">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="17 8 12 3 7 8"></polyline>
+                      <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                  </div>
+                  <strong id="fileText">Choose a PDF file or drag & drop</strong>
+                  <small>Maximum size: 20 MB • PDF format only</small>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <div id="uploadStatus" class="status" aria-live="polite"></div>
+              <button class="primary-btn" id="uploadBtn" type="submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                <span>Complete</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <footer>
+    <p> studentportal@edu.in </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
