@@ -3,5 +3,6 @@ services:
     name: dochub
     env: node
     plan: free
+    region: singapore
     buildCommand: npm install
     startCommand: npm start
